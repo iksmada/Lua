@@ -22,16 +22,13 @@ comando           : listavar '=' listaexp |
 ultimocomando     : 'return' (listaexp)? | 'break' ;
 nomedafuncao      : Nome ('.' Nome)* (':' Nome)? ;
 listavar          : var (',' var)* ;
-var               : Nome | Nome varLinha |
-                    expprefixo '[' exp ']'| expprefixo '[' exp ']' varLinha |
-                    expprefixo '.' Nome   | expprefixo '.' Nome varLinha;
-varLinha          : '[' exp ']'|'[' exp ']' varLinha |'.' Nome |'.' Nome varLinha;
+var               : Nome | expprefixo '[' exp ']' | expprefixo '.' Nome ;
 listadenomes      : Nome | (',' Nome)* ;
 listaexp          : (exp ',')* exp ;
 exp               : 'nil' | 'false' | 'true' | Numero | Cadeia | '...' | funcao | 
-                    var|expprefixo | construtortabela | exp opbin exp | opunaria exp ;
-expprefixo        : chamadadefuncao | '(' exp ')' ;
-chamadadefuncao   : expprefixo args | var args | expprefixo ':' Nome args| var ':' Nome args ;
+                    expprefixo | construtortabela | exp opbin exp | opunaria exp ;
+expprefixo        : var | chamadadefuncao | '(' exp ')' ;
+chamadadefuncao   : expprefixo args | expprefixo ':' Nome args ;
 args              : '(' (listaexp)? ')' | construtortabela | Cadeia ;
 funcao            : 'function' corpodafuncao ;
 corpodafuncao     : '(' (listapar)? ')' bloco 'end' ;

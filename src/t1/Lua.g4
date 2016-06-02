@@ -8,8 +8,9 @@ grammar Lua;
 @members {
    public static String grupo="495913";
 }
-
-/*Nomes (também chamados de identificadores) em Lua podem ser qualquer cadeia de letras, dígitos, e sublinhados, que não iniciam com um dígito. Identificadores são usados para nomear variáveis, campos de tabelas, e rótulos.*/
+/*ref: https://github.com/antlr/antlr4/blob/master/doc/lexer-rules.md#lexer-rule-elements
+        https://github.com/antlr/antlr4/blob/master/doc/parser-rules.md#rule-elements
+Nomes (também chamados de identificadores) em Lua podem ser qualquer cadeia de letras, dígitos, e sublinhados, que não iniciam com um dígito. Identificadores são usados para nomear variáveis, campos de tabelas, e rótulos.*/
 Nome              :('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 Palavrasreservadas:('and'|'break'|'do'|'else'|'elseif'|'end'|'false'|'for'|'function'|'goto'|'if'|
                       'in'|'local'|'nil'|'not'|'or'|'repeat'|'return'|'then'|'true'|'until'|'while');
@@ -17,7 +18,16 @@ Numero            :('0'..'9')+ ('.' ('0'..'9')*)?;
 //Cadeias literais podem ser delimitadas por aspas simples ou duplas balanceadas
 Cadeia            :'"'~('\n'|'\t' | '\r' ) '"'|
                    '\''~('\n'|'\t' | '\r' ) '\'';
-WS                : [ \t\r\n]+ -> skip ;
+
+Ws              : [ \t\r\n]+ -> skip ;
+
+Comentario      : '--' ~[\r\n]* '\r'? '\n' -> skip;
+
+Separadordecampos : ',' | ';' ;
+Opbin             : '+' | '-' | '*' | '/' | '^' | '%' | '..' | 
+                    '<' | '<=' | '>' | '>=' | '==' | '~=' | 
+                    'and' | 'or' ;
+Opunaria          : '-' | 'not' | '#' ;
 
 programa          : trecho ;
 trecho            : (comando (';')?)* (ultimocomando (';')?)? ;
@@ -41,22 +51,15 @@ expprefixo        : (chamadadefuncao | '(' exp ')' | Nome ) empprefixoTail;
 empprefixoTail    : ('[' exp ']'|'.' Nome) empprefixoTail|;
 chamadadefuncao   : ( '(' exp ')' | Nome ) chamadaTail;
 chamadaTail       : empprefixoTail (':' Nome)? args chamadaTail;
-/*chamadadefuncao   : ('(' exp ')'|var) chamdadedefuncaoTail;
-chamdadedefuncaoTail:(':' Nome)? args chamdadedefuncaoTail;*/
-listadenomes      : Nome | (',' Nome)* ;
+listadenomes      : Nome (',' Nome)* ;
 listaexp          : (exp ',')* exp ;
 exp               : 'nil' | 'false' | 'true' | Numero | Cadeia | '...' | funcao | 
-                    expprefixo | construtortabela | exp opbin exp | opunaria exp ;
+                    expprefixo | construtortabela | exp Opbin exp | Opunaria exp ;
 args              : '(' (listaexp)? ')' | construtortabela | Cadeia ;
 funcao            : 'function' corpodafuncao ;
 corpodafuncao     : '(' (listapar)? ')' bloco 'end' ;
 listapar          : listadenomes (',' '...')? | '...' ;
 construtortabela  : '{' (listadecampos)? '}' ;
-listadecampos     : campo (separadordecampos campo)* (separadordecampos)? ;
+listadecampos     : campo (Separadordecampos campo)* (Separadordecampos)? ;
 campo             : '[' exp ']' '=' exp | Nome '=' exp | exp ;
-separadordecampos : ',' | ';' ;
-opbin             : '+' | '-' | '*' | '/' | '^' | '%' | '..' | 
-                    '<' | '<=' | '>' | '>=' | '==' | '~=' | 
-                    'and' | 'or' ;
-opunaria          : '-' | 'not' | '#' ;
 

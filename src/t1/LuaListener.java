@@ -226,34 +226,4 @@ public interface LuaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitCampo(LuaParser.CampoContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LuaParser#separadordecampos}.
-	 * @param ctx the parse tree
-	 */
-	void enterSeparadordecampos(LuaParser.SeparadordecamposContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LuaParser#separadordecampos}.
-	 * @param ctx the parse tree
-	 */
-	void exitSeparadordecampos(LuaParser.SeparadordecamposContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LuaParser#opbin}.
-	 * @param ctx the parse tree
-	 */
-	void enterOpbin(LuaParser.OpbinContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LuaParser#opbin}.
-	 * @param ctx the parse tree
-	 */
-	void exitOpbin(LuaParser.OpbinContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LuaParser#opunaria}.
-	 * @param ctx the parse tree
-	 */
-	void enterOpunaria(LuaParser.OpunariaContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LuaParser#opunaria}.
-	 * @param ctx the parse tree
-	 */
-	void exitOpunaria(LuaParser.OpunariaContext ctx);
 }

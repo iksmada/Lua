@@ -12,12 +12,11 @@ grammar Lua;
         https://github.com/antlr/antlr4/blob/master/doc/parser-rules.md#rule-elements
 Nomes (também chamados de identificadores) em Lua podem ser qualquer cadeia de letras, dígitos, e sublinhados, que não iniciam com um dígito. Identificadores são usados para nomear variáveis, campos de tabelas, e rótulos.*/
 Nome              :('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
-Palavrasreservadas:('and'|'break'|'do'|'else'|'elseif'|'end'|'false'|'for'|'function'|'goto'|'if'|
-                      'in'|'local'|'nil'|'not'|'or'|'repeat'|'return'|'then'|'true'|'until'|'while');
+//Palavrasreservadas:('and'|'break'|'do'|'else'|'elseif'|'end'|'false'|'for'|'function'|'goto'|'if'|'in'|'local'|'nil'|'not'|'or'|'repeat'|'return'|'then'|'true'|'until'|'while');
 Numero            :('0'..'9')+ ('.' ('0'..'9')*)?;
 //Cadeias literais podem ser delimitadas por aspas simples ou duplas balanceadas
-Cadeia            :'"'~('\n'|'\t' | '\r' ) '"'|
-                   '\''~('\n'|'\t' | '\r' ) '\'';
+Cadeia            :'"'~('\n'|'\t' | '\r' )* '"'|
+                   '\''~('\n'|'\t' | '\r' )* '\'';
 
 Ws              : [ \t\r\n]+ -> skip ;
 

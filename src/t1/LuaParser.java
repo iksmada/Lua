@@ -19,9 +19,8 @@ public class LuaParser extends Parser {
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
 		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, 
 		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24, 
-		T__24=25, T__25=26, T__26=27, T__27=28, T__28=29, T__29=30, Nome=31, Palavrasreservadas=32, 
-		Numero=33, Cadeia=34, Ws=35, Comentario=36, Separadordecampos=37, Opbin=38, 
-		Opunaria=39;
+		T__24=25, T__25=26, T__26=27, T__27=28, T__28=29, T__29=30, Nome=31, Numero=32, 
+		Cadeia=33, Ws=34, Comentario=35, Separadordecampos=36, Opbin=37, Opunaria=38;
 	public static final int
 		RULE_programa = 0, RULE_trecho = 1, RULE_bloco = 2, RULE_comando = 3, 
 		RULE_ultimocomando = 4, RULE_nomedafuncao = 5, RULE_listavar = 6, RULE_var = 7, 
@@ -45,9 +44,8 @@ public class LuaParser extends Parser {
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, null, null, null, null, null, null, null, null, null, null, null, 
 		null, null, null, null, null, null, null, null, null, null, null, null, 
-		null, null, null, null, null, null, null, "Nome", "Palavrasreservadas", 
-		"Numero", "Cadeia", "Ws", "Comentario", "Separadordecampos", "Opbin", 
-		"Opunaria"
+		null, null, null, null, null, null, null, "Nome", "Numero", "Cadeia", 
+		"Ws", "Comentario", "Separadordecampos", "Opbin", "Opunaria"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -1801,7 +1799,7 @@ public class LuaParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3)\u013f\4\2\t\2\4"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3(\u013f\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\3\2\3\2\3\3\3\3\5\3"+
@@ -1884,18 +1882,18 @@ public class LuaParser extends Parser {
 		"\2\2\u00e7\u00e9\3\2\2\2\u00e8\u00e5\3\2\2\2\u00e9\u00ec\3\2\2\2\u00ea"+
 		"\u00e8\3\2\2\2\u00ea\u00eb\3\2\2\2\u00eb\u00ed\3\2\2\2\u00ec\u00ea\3\2"+
 		"\2\2\u00ed\u00ee\5\36\20\2\u00ee\35\3\2\2\2\u00ef\u00f0\b\20\1\2\u00f0"+
-		"\u00f1\7)\2\2\u00f1\u00fc\5\36\20\3\u00f2\u00fc\7\33\2\2\u00f3\u00fc\7"+
-		"\34\2\2\u00f4\u00fc\7\35\2\2\u00f5\u00fc\7#\2\2\u00f6\u00fc\7$\2\2\u00f7"+
+		"\u00f1\7(\2\2\u00f1\u00fc\5\36\20\3\u00f2\u00fc\7\33\2\2\u00f3\u00fc\7"+
+		"\34\2\2\u00f4\u00fc\7\35\2\2\u00f5\u00fc\7\"\2\2\u00f6\u00fc\7#\2\2\u00f7"+
 		"\u00fc\7\36\2\2\u00f8\u00fc\5\"\22\2\u00f9\u00fc\5\22\n\2\u00fa\u00fc"+
 		"\5(\25\2\u00fb\u00ef\3\2\2\2\u00fb\u00f2\3\2\2\2\u00fb\u00f3\3\2\2\2\u00fb"+
 		"\u00f4\3\2\2\2\u00fb\u00f5\3\2\2\2\u00fb\u00f6\3\2\2\2\u00fb\u00f7\3\2"+
 		"\2\2\u00fb\u00f8\3\2\2\2\u00fb\u00f9\3\2\2\2\u00fb\u00fa\3\2\2\2\u00fc"+
-		"\u0102\3\2\2\2\u00fd\u00fe\f\4\2\2\u00fe\u00ff\7(\2\2\u00ff\u0101\5\36"+
+		"\u0102\3\2\2\2\u00fd\u00fe\f\4\2\2\u00fe\u00ff\7\'\2\2\u00ff\u0101\5\36"+
 		"\20\5\u0100\u00fd\3\2\2\2\u0101\u0104\3\2\2\2\u0102\u0100\3\2\2\2\u0102"+
 		"\u0103\3\2\2\2\u0103\37\3\2\2\2\u0104\u0102\3\2\2\2\u0105\u0107\7\31\2"+
 		"\2\u0106\u0108\5\34\17\2\u0107\u0106\3\2\2\2\u0107\u0108\3\2\2\2\u0108"+
 		"\u0109\3\2\2\2\u0109\u010d\7\32\2\2\u010a\u010d\5(\25\2\u010b\u010d\7"+
-		"$\2\2\u010c\u0105\3\2\2\2\u010c\u010a\3\2\2\2\u010c\u010b\3\2\2\2\u010d"+
+		"#\2\2\u010c\u0105\3\2\2\2\u010c\u010a\3\2\2\2\u010c\u010b\3\2\2\2\u010d"+
 		"!\3\2\2\2\u010e\u010f\7\21\2\2\u010f\u0110\5$\23\2\u0110#\3\2\2\2\u0111"+
 		"\u0113\7\31\2\2\u0112\u0114\5&\24\2\u0113\u0112\3\2\2\2\u0113\u0114\3"+
 		"\2\2\2\u0114\u0115\3\2\2\2\u0115\u0116\7\32\2\2\u0116\u0117\5\6\4\2\u0117"+
@@ -1904,9 +1902,9 @@ public class LuaParser extends Parser {
 		"\u0120\3\2\2\2\u011e\u0120\7\36\2\2\u011f\u0119\3\2\2\2\u011f\u011e\3"+
 		"\2\2\2\u0120\'\3\2\2\2\u0121\u0123\7\37\2\2\u0122\u0124\5*\26\2\u0123"+
 		"\u0122\3\2\2\2\u0123\u0124\3\2\2\2\u0124\u0125\3\2\2\2\u0125\u0126\7 "+
-		"\2\2\u0126)\3\2\2\2\u0127\u012c\5,\27\2\u0128\u0129\7\'\2\2\u0129\u012b"+
+		"\2\2\u0126)\3\2\2\2\u0127\u012c\5,\27\2\u0128\u0129\7&\2\2\u0129\u012b"+
 		"\5,\27\2\u012a\u0128\3\2\2\2\u012b\u012e\3\2\2\2\u012c\u012a\3\2\2\2\u012c"+
-		"\u012d\3\2\2\2\u012d\u0130\3\2\2\2\u012e\u012c\3\2\2\2\u012f\u0131\7\'"+
+		"\u012d\3\2\2\2\u012d\u0130\3\2\2\2\u012e\u012c\3\2\2\2\u012f\u0131\7&"+
 		"\2\2\u0130\u012f\3\2\2\2\u0130\u0131\3\2\2\2\u0131+\3\2\2\2\u0132\u0133"+
 		"\7\27\2\2\u0133\u0134\5\36\20\2\u0134\u0135\7\30\2\2\u0135\u0136\7\4\2"+
 		"\2\u0136\u0137\5\36\20\2\u0137\u013d\3\2\2\2\u0138\u0139\7!\2\2\u0139"+

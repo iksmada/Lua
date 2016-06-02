@@ -32,8 +32,10 @@ nomedafuncao      : Nome ('.' Nome)* (':' Nome)? ;
 listavar          : var (',' var)* ;
 var               : Nome | expprefixo '[' exp ']' | expprefixo '.' Nome ;
 expprefixo        : var | chamadadefuncao | '(' exp ')' ;
-chamadadefuncao   : chamadadefuncao args | chamadadefuncao ':' Nome args|
-                    var args | var ':' Nome args | '(' exp ')' args |'(' exp ')' ':' Nome args;
+chamadadefuncao   : var (':' Nome)? args chamdadedefuncaoTail|
+                    '(' exp ')' (':' Nome)? args chamdadedefuncaoTail;
+chamdadedefuncaoTail:(':' Nome)? args chamdadedefuncaoTail| ;
+                        //chamadadefuncao args | chamadadefuncao ':' Nome args
 listadenomes      : Nome | (',' Nome)* ;
 listaexp          : (exp ',')* exp ;
 exp               : 'nil' | 'false' | 'true' | Numero | Cadeia | '...' | funcao | 

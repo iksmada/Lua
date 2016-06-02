@@ -5,6 +5,10 @@
 
 grammar Lua;
 
+@members {
+   public static String grupo="<<495913>>";
+}
+
 /*Nomes (também chamados de identificadores) em Lua podem ser qualquer cadeia de letras, dígitos, e sublinhados, que não iniciam com um dígito. Identificadores são usados para nomear variáveis, campos de tabelas, e rótulos.*/
 Nome              :('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
                     /*| ~('and'|'break'|'do'|'else'|'elseif'|'end'|'false'|'for'|'function'|'goto'|'if'|
@@ -13,6 +17,8 @@ Numero            :('0'..'9')+ ('.' ('0'..'9')*)?;
 //Cadeias literais podem ser delimitadas por aspas simples ou duplas balanceadas
 Cadeia            :'"'~('\n'|'\t' | '\r' ) '"'|
                    '\''~('\n'|'\t' | '\r' ) '\'';
+WS                : [ \t\r\n]+ -> skip ;
+
 programa          : trecho ;
 trecho            : (comando (';')?)* (ultimocomando (';')?)? ;
 bloco             : trecho ;
@@ -52,10 +58,4 @@ opbin             : '+' | '-' | '*' | '/' | '^' | '%' | '..' |
                     '<' | '<=' | '>' | '>=' | '==' | '~=' | 
                     'and' | 'or' ;
 opunaria          : '-' | 'not' | '#' ;
-ws                :   (' ' | '\t' | '\r' | '\n') {->skip;};
 
-/*
-@members {
-   public static String grupo="<<495913>>";
-}
-*/

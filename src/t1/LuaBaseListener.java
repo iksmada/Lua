@@ -111,18 +111,6 @@ public class LuaBaseListener implements LuaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVarTail(LuaParser.VarTailContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitVarTail(LuaParser.VarTailContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterExpprefixo(LuaParser.ExpprefixoContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -135,13 +123,37 @@ public class LuaBaseListener implements LuaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNomeArgs(LuaParser.NomeArgsContext ctx) { }
+	@Override public void enterEmpprefixoTail(LuaParser.EmpprefixoTailContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNomeArgs(LuaParser.NomeArgsContext ctx) { }
+	@Override public void exitEmpprefixoTail(LuaParser.EmpprefixoTailContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterChamadadefuncao(LuaParser.ChamadadefuncaoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitChamadadefuncao(LuaParser.ChamadadefuncaoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterChamadaTail(LuaParser.ChamadaTailContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitChamadaTail(LuaParser.ChamadaTailContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

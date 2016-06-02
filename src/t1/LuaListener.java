@@ -87,16 +87,6 @@ public interface LuaListener extends ParseTreeListener {
 	 */
 	void exitVar(LuaParser.VarContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LuaParser#varTail}.
-	 * @param ctx the parse tree
-	 */
-	void enterVarTail(LuaParser.VarTailContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LuaParser#varTail}.
-	 * @param ctx the parse tree
-	 */
-	void exitVarTail(LuaParser.VarTailContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link LuaParser#expprefixo}.
 	 * @param ctx the parse tree
 	 */
@@ -107,15 +97,35 @@ public interface LuaListener extends ParseTreeListener {
 	 */
 	void exitExpprefixo(LuaParser.ExpprefixoContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LuaParser#nomeArgs}.
+	 * Enter a parse tree produced by {@link LuaParser#empprefixoTail}.
 	 * @param ctx the parse tree
 	 */
-	void enterNomeArgs(LuaParser.NomeArgsContext ctx);
+	void enterEmpprefixoTail(LuaParser.EmpprefixoTailContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link LuaParser#nomeArgs}.
+	 * Exit a parse tree produced by {@link LuaParser#empprefixoTail}.
 	 * @param ctx the parse tree
 	 */
-	void exitNomeArgs(LuaParser.NomeArgsContext ctx);
+	void exitEmpprefixoTail(LuaParser.EmpprefixoTailContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LuaParser#chamadadefuncao}.
+	 * @param ctx the parse tree
+	 */
+	void enterChamadadefuncao(LuaParser.ChamadadefuncaoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LuaParser#chamadadefuncao}.
+	 * @param ctx the parse tree
+	 */
+	void exitChamadadefuncao(LuaParser.ChamadadefuncaoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LuaParser#chamadaTail}.
+	 * @param ctx the parse tree
+	 */
+	void enterChamadaTail(LuaParser.ChamadaTailContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LuaParser#chamadaTail}.
+	 * @param ctx the parse tree
+	 */
+	void exitChamadaTail(LuaParser.ChamadaTailContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LuaParser#listadenomes}.
 	 * @param ctx the parse tree

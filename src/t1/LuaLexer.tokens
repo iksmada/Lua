@@ -46,9 +46,10 @@ T__44=45
 T__45=46
 T__46=47
 Nome=48
-Numero=49
-Cadeia=50
-WS=51
+Palavrasreservadas=49
+Numero=50
+Cadeia=51
+WS=52
 ';'=1
 '='=2
 'do'=3

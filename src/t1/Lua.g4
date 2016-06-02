@@ -5,6 +5,10 @@
 
 grammar Lua;
 
+
+Nome              :;
+Numero            :;
+Cadeia            :;
 programa          : trecho ;
 trecho            : (comando (';')?)* (ultimocomando (';')?)? ;
 bloco             : trecho ;
@@ -42,6 +46,7 @@ opbin             : '+' | '-' | '*' | '/' | '^' | '%' | '..' |
                     '<' | '<=' | '>' | '>=' | '==' | '~=' | 
                     'and' | 'or' ;
 opunaria          : '-' | 'not' | '#' ;
+ws                :   (' ' | '\t' | '\r' | '\n') {->skip;};
 
 /*
 @members {

@@ -9,6 +9,26 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface LuaListener extends ParseTreeListener {
 	/**
+	 * Enter a parse tree produced by {@link LuaParser#opbin}.
+	 * @param ctx the parse tree
+	 */
+	void enterOpbin(LuaParser.OpbinContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LuaParser#opbin}.
+	 * @param ctx the parse tree
+	 */
+	void exitOpbin(LuaParser.OpbinContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LuaParser#opunaria}.
+	 * @param ctx the parse tree
+	 */
+	void enterOpunaria(LuaParser.OpunariaContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LuaParser#opunaria}.
+	 * @param ctx the parse tree
+	 */
+	void exitOpunaria(LuaParser.OpunariaContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link LuaParser#programa}.
 	 * @param ctx the parse tree
 	 */

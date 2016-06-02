@@ -23,10 +23,10 @@ Ws              : [ \t\r\n]+ -> skip ;
 Comentario      : '--' ~[\r\n]* '\r'? '\n' -> skip;
 
 Separadordecampos : ',' | ';' ;
-Opbin             : '+' | '-' | '*' | '/' | '^' | '%' | '..' | 
+opbin             : '+' | '-' | '*' | '/' | '^' | '%' | '..' | 
                     '<' | '<=' | '>' | '>=' | '==' | '~=' | 
                     'and' | 'or' ;
-Opunaria          : '-' | 'not' | '#' ;
+opunaria          : '-' | 'not' | '#' ;
 
 programa          : trecho ;
 trecho            : (comando (';')?)* (ultimocomando (';')?)? ;
@@ -53,7 +53,7 @@ expprefixoTail    : '[' exp ']' | '.' Nome | args | ':' Nome args |
 listadenomes      : Nome (',' Nome)* ;
 listaexp          : (exp ',')* exp ;
 exp               : 'nil' | 'false' | 'true' | Numero | Cadeia | '...' | funcao | 
-                    expprefixo | construtortabela | exp Opbin exp | Opunaria exp ;
+                    expprefixo | construtortabela | exp opbin exp | opunaria exp ;
 args              : '(' (listaexp)? ')' | construtortabela | Cadeia ;
 funcao            : 'function' corpodafuncao ;
 corpodafuncao     : '(' (listapar)? ')' bloco 'end' ;

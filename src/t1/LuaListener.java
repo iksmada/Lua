@@ -1,4 +1,6 @@
-package t1;// Generated from Lua.g4 by ANTLR 4.5.2
+package t1;
+
+// Generated from Lua.g4 by ANTLR 4.5.3
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -87,26 +89,6 @@ public interface LuaListener extends ParseTreeListener {
 	 */
 	void exitVar(LuaParser.VarContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LuaParser#expprefixo}.
-	 * @param ctx the parse tree
-	 */
-	void enterExpprefixo(LuaParser.ExpprefixoContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LuaParser#expprefixo}.
-	 * @param ctx the parse tree
-	 */
-	void exitExpprefixo(LuaParser.ExpprefixoContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LuaParser#empprefixoTail}.
-	 * @param ctx the parse tree
-	 */
-	void enterEmpprefixoTail(LuaParser.EmpprefixoTailContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LuaParser#empprefixoTail}.
-	 * @param ctx the parse tree
-	 */
-	void exitEmpprefixoTail(LuaParser.EmpprefixoTailContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link LuaParser#chamadadefuncao}.
 	 * @param ctx the parse tree
 	 */
@@ -117,15 +99,25 @@ public interface LuaListener extends ParseTreeListener {
 	 */
 	void exitChamadadefuncao(LuaParser.ChamadadefuncaoContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LuaParser#chamadaTail}.
+	 * Enter a parse tree produced by {@link LuaParser#expprefixo}.
 	 * @param ctx the parse tree
 	 */
-	void enterChamadaTail(LuaParser.ChamadaTailContext ctx);
+	void enterExpprefixo(LuaParser.ExpprefixoContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link LuaParser#chamadaTail}.
+	 * Exit a parse tree produced by {@link LuaParser#expprefixo}.
 	 * @param ctx the parse tree
 	 */
-	void exitChamadaTail(LuaParser.ChamadaTailContext ctx);
+	void exitExpprefixo(LuaParser.ExpprefixoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LuaParser#expprefixoTail}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpprefixoTail(LuaParser.ExpprefixoTailContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LuaParser#expprefixoTail}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpprefixoTail(LuaParser.ExpprefixoTailContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LuaParser#listadenomes}.
 	 * @param ctx the parse tree

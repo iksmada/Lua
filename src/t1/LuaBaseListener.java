@@ -1,4 +1,6 @@
-package t1;// Generated from Lua.g4 by ANTLR 4.5.2
+package t1;
+
+// Generated from Lua.g4 by ANTLR 4.5.3
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -111,30 +113,6 @@ public class LuaBaseListener implements LuaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExpprefixo(LuaParser.ExpprefixoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitExpprefixo(LuaParser.ExpprefixoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterEmpprefixoTail(LuaParser.EmpprefixoTailContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitEmpprefixoTail(LuaParser.EmpprefixoTailContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterChamadadefuncao(LuaParser.ChamadadefuncaoContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -147,13 +125,25 @@ public class LuaBaseListener implements LuaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterChamadaTail(LuaParser.ChamadaTailContext ctx) { }
+	@Override public void enterExpprefixo(LuaParser.ExpprefixoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitChamadaTail(LuaParser.ChamadaTailContext ctx) { }
+	@Override public void exitExpprefixo(LuaParser.ExpprefixoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterExpprefixoTail(LuaParser.ExpprefixoTailContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExpprefixoTail(LuaParser.ExpprefixoTailContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

@@ -1,4 +1,6 @@
-package t1;// Generated from Lua.g4 by ANTLR 4.5.2
+package t1;
+
+// Generated from Lua.g4 by ANTLR 4.5.3
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
@@ -10,7 +12,7 @@ import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class LuaLexer extends Lexer {
-	static { RuntimeMetaData.checkVersion("4.5.2", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.5.3", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -79,7 +81,7 @@ public class LuaLexer extends Lexer {
 	}
 
 
-	   public static String grupo="495913";
+	   public static String grupo="495913, 495719";
 
 
 	public LuaLexer(CharStream input) {

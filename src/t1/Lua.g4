@@ -6,11 +6,11 @@
 grammar Lua;
 
 @members {
-   public static String grupo="495913";
+   public static String grupo="495913, 495719";
 }
 /*ref: https://github.com/antlr/antlr4/blob/master/doc/lexer-rules.md#lexer-rule-elements
         https://github.com/antlr/antlr4/blob/master/doc/parser-rules.md#rule-elements
-Nomes (também chamados de identificadores) em Lua podem ser qualquer cadeia de letras, dígitos, e sublinhados, que não iniciam com um dígito. Identificadores são usados para nomear variáveis, campos de tabelas, e rótulos.*/
+Nomes (tambï¿½m chamados de identificadores) em Lua podem ser qualquer cadeia de letras, dï¿½gitos, e sublinhados, que nï¿½o iniciam com um dï¿½gito. Identificadores sï¿½o usados para nomear variï¿½veis, campos de tabelas, e rï¿½tulos.*/
 Nome              :('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 //Palavrasreservadas:('and'|'break'|'do'|'else'|'elseif'|'end'|'false'|'for'|'function'|'goto'|'if'|'in'|'local'|'nil'|'not'|'or'|'repeat'|'return'|'then'|'true'|'until'|'while');
 Numero            :('0'..'9')+ ('.' ('0'..'9')*)?;
@@ -46,10 +46,10 @@ ultimocomando     : 'return' (listaexp)? | 'break' ;
 nomedafuncao      : Nome ('.' Nome)* (':' Nome)? ;
 listavar          : var (',' var)* ;
 var               : Nome | expprefixo '[' exp ']' | expprefixo '.' Nome ;
-expprefixo        : (chamadadefuncao | '(' exp ')' | Nome ) empprefixoTail;
-empprefixoTail    : ('[' exp ']'|'.' Nome) empprefixoTail|;
-chamadadefuncao   : ( '(' exp ')' | Nome ) chamadaTail;
-chamadaTail       : empprefixoTail (':' Nome)? args chamadaTail;
+chamadadefuncao   : expprefixo args | expprefixo ':' Nome args ;
+expprefixo        : Nome | '(' exp ')' | Nome expprefixoTail | '(' exp ')' expprefixoTail ;
+expprefixoTail    : '[' exp ']' | '.' Nome | args | ':' Nome args |
+                    '[' exp ']' expprefixoTail | '.' Nome expprefixoTail | args expprefixoTail | ':' Nome args expprefixoTail ;
 listadenomes      : Nome (',' Nome)* ;
 listaexp          : (exp ',')* exp ;
 exp               : 'nil' | 'false' | 'true' | Numero | Cadeia | '...' | funcao | 

@@ -1,4 +1,4 @@
-// Generated from Lua.g4 by ANTLR 4.5.2
+package t1;// Generated from Lua.g4 by ANTLR 4.5.2
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;

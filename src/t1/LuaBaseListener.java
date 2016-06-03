@@ -1,6 +1,4 @@
-package t1;
-
-// Generated from Lua.g4 by ANTLR 4.5.3
+package t1;// Generated from Lua.g4 by ANTLR 4.5.2
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;

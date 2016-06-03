@@ -63,7 +63,7 @@ comando
     |   'if' exp 'then' bloco ('elseif' exp 'then' bloco)* ('else' bloco)? 'end' 
     |   'for' NOME '=' exp ',' exp (',' exp)? 'do' bloco 'end' 
     |   'for' listadenomes 'in' listaexp 'do' bloco 'end' 
-    |   'function' nomedafuncao corpodafuncao 
+    |   'function' nomedafuncao { TabelaDeSimbolos.adicionarSimbolo($nomedafuncao.text,Tipo.FUNCAO); } corpodafuncao 
     |   'local' 'function' NOME corpodafuncao 
     |   'local' listadenomes ('=' listaexp)? 
     ;
@@ -71,7 +71,7 @@ ultimocomando
     :   'return' (listaexp)? | 'break' 
     ;
 nomedafuncao      
-    :   NOME ('.' NOME)* (':' NOME)? { TabelaDeSimbolos.adicionarSimbolo($NOME.text,Tipo.FUNCAO); }  
+    :   NOME ('.' NOME)* (':' NOME)?   
     ;
 listavar          
     :   var (',' var)* 
@@ -88,15 +88,17 @@ chamadadefuncao
 expprefixo        
     :   NOME { TabelaDeSimbolos.adicionarSimbolo($NOME.text,Tipo.VARIAVEL); } 
     |   '(' exp ')' 
-    |   NOME expprefixoTail 
+    |   NOME expprefixoTail
     |   '(' exp ')' expprefixoTail 
+    |   nomedafuncao args { TabelaDeSimbolos.adicionarSimbolo($nomedafuncao.text,Tipo.FUNCAO); }
     ;
 expprefixoTail    
     :   '[' exp ']' 
-    |   '.' NOME { TabelaDeSimbolos.adicionarSimbolo($NOME.text,Tipo.FUNCAO); } | args 
-    |   ':' NOME args 
+    |   '.' NOME //{ TabelaDeSimbolos.adicionarSimbolo($NOME.text,Tipo.FUNCAO); } 
+    |   args 
+    //|   ':' NOME args 
     |   '[' exp ']' expprefixoTail 
-    |   '.' NOME expprefixoTail 
+    //|   '.' NOME expprefixoTail 
     |   args expprefixoTail 
     |   ':' NOME args expprefixoTail 
     ;

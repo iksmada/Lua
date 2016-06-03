@@ -49,13 +49,15 @@ public class Corrigir {
             parser.programa();
 
             if (!out.isModificado()) {
-                out.println("Fim da analise. Sem erros sintaticos!!");
+                out.println("Fim da analise. Sem erros sintaticos.");
                 out.println("Tabela de simbolos:");
 
                 TabelaDeSimbolos.imprimirTabela(out);
                 System.err.print(out);
             } else {
-                out.println("Fim da analise. Com erros sintaticos!!");
+                out.println("Fim da analise. Com erros sintaticos.");
+                TabelaDeSimbolos.imprimirTabela(out);
+                System.err.print(out);
             }
 
             if (GERA) {

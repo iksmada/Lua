@@ -1,10 +1,6 @@
--- funcao que calcula o fatorial
-function fact(n)
-   if n == 0 then
-      return 1
-   else
-      return n * fact(n - 1)
-   end
+-- funcao que retorna a soma de dois valores
+function soma(a,b)
+   return a+b
 end;
 
-print(fact(5))
+--print(soma(3,9))

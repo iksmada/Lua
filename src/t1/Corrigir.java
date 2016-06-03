@@ -16,8 +16,7 @@ public class Corrigir {
 
     // Especifique o caminho dos casos de teste.
     // Deve haver dois subdiretorios: entrada e saida
-    private final static String CAMINHO_CASOS_TESTE = "/Users/vitor/Desktop/Compiladores/casosDeTesteSintatico";
-    
+    private final static String CAMINHO_CASOS_TESTE = "casosDeTesteSintatico";
     // As flags GERA e VERIFICA são de uso do professor
     // GERA = true significa que a saída vai ser gerada, sobrescrevendo qualquer
     // conteudo do subdiretorio saida

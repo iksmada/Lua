@@ -24,8 +24,8 @@ public class LuaLexer extends Lexer {
 		T__24=25, T__25=26, T__26=27, T__27=28, T__28=29, T__29=30, T__30=31, 
 		T__31=32, T__32=33, T__33=34, T__34=35, T__35=36, T__36=37, T__37=38, 
 		T__38=39, T__39=40, T__40=41, T__41=42, T__42=43, T__43=44, T__44=45, 
-		T__45=46, T__46=47, Nome=48, Numero=49, Cadeia=50, Ws=51, Comentario=52, 
-		Separadordecampos=53;
+		T__45=46, T__46=47, NOME=48, NUMERO=49, CADEIA=50, WS=51, COMENTARIO=52, 
+		SEPARADORDECAMPOS=53;
 	public static String[] modeNames = {
 		"DEFAULT_MODE"
 	};
@@ -36,8 +36,8 @@ public class LuaLexer extends Lexer {
 		"T__17", "T__18", "T__19", "T__20", "T__21", "T__22", "T__23", "T__24", 
 		"T__25", "T__26", "T__27", "T__28", "T__29", "T__30", "T__31", "T__32", 
 		"T__33", "T__34", "T__35", "T__36", "T__37", "T__38", "T__39", "T__40", 
-		"T__41", "T__42", "T__43", "T__44", "T__45", "T__46", "Nome", "Numero", 
-		"Cadeia", "Ws", "Comentario", "Separadordecampos"
+		"T__41", "T__42", "T__43", "T__44", "T__45", "T__46", "NOME", "NUMERO", 
+		"CADEIA", "WS", "COMENTARIO", "SEPARADORDECAMPOS"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
@@ -53,7 +53,7 @@ public class LuaLexer extends Lexer {
 		null, null, null, null, null, null, null, null, null, null, null, null, 
 		null, null, null, null, null, null, null, null, null, null, null, null, 
 		null, null, null, null, null, null, null, null, null, null, null, null, 
-		"Nome", "Numero", "Cadeia", "Ws", "Comentario", "Separadordecampos"
+		"NOME", "NUMERO", "CADEIA", "WS", "COMENTARIO", "SEPARADORDECAMPOS"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 

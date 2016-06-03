@@ -24,8 +24,8 @@ public class LuaParser extends Parser {
 		T__24=25, T__25=26, T__26=27, T__27=28, T__28=29, T__29=30, T__30=31, 
 		T__31=32, T__32=33, T__33=34, T__34=35, T__35=36, T__36=37, T__37=38, 
 		T__38=39, T__39=40, T__40=41, T__41=42, T__42=43, T__43=44, T__44=45, 
-		T__45=46, T__46=47, Nome=48, Numero=49, Cadeia=50, Ws=51, Comentario=52, 
-		Separadordecampos=53;
+		T__45=46, T__46=47, NOME=48, NUMERO=49, CADEIA=50, WS=51, COMENTARIO=52, 
+		SEPARADORDECAMPOS=53;
 	public static final int
 		RULE_opbin = 0, RULE_opunaria = 1, RULE_programa = 2, RULE_trecho = 3, 
 		RULE_bloco = 4, RULE_comando = 5, RULE_ultimocomando = 6, RULE_nomedafuncao = 7, 
@@ -54,7 +54,7 @@ public class LuaParser extends Parser {
 		null, null, null, null, null, null, null, null, null, null, null, null, 
 		null, null, null, null, null, null, null, null, null, null, null, null, 
 		null, null, null, null, null, null, null, null, null, null, null, null, 
-		"Nome", "Numero", "Cadeia", "Ws", "Comentario", "Separadordecampos"
+		"NOME", "NUMERO", "CADEIA", "WS", "COMENTARIO", "SEPARADORDECAMPOS"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -265,7 +265,7 @@ public class LuaParser extends Parser {
 			setState(58);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__19) | (1L << T__21) | (1L << T__22) | (1L << T__24) | (1L << T__28) | (1L << T__31) | (1L << T__32) | (1L << T__39) | (1L << Nome))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__19) | (1L << T__21) | (1L << T__22) | (1L << T__24) | (1L << T__28) | (1L << T__31) | (1L << T__32) | (1L << T__39) | (1L << NOME))) != 0)) {
 				{
 				{
 				setState(52);
@@ -377,7 +377,7 @@ public class LuaParser extends Parser {
 		public ExpContext exp(int i) {
 			return getRuleContext(ExpContext.class,i);
 		}
-		public TerminalNode Nome() { return getToken(LuaParser.Nome, 0); }
+		public TerminalNode NOME() { return getToken(LuaParser.NOME, 0); }
 		public ListadenomesContext listadenomes() {
 			return getRuleContext(ListadenomesContext.class,0);
 		}
@@ -518,7 +518,7 @@ public class LuaParser extends Parser {
 				setState(109);
 				match(T__28);
 				setState(110);
-				match(Nome);
+				match(NOME);
 				setState(111);
 				match(T__18);
 				setState(112);
@@ -584,7 +584,7 @@ public class LuaParser extends Parser {
 				setState(136);
 				match(T__31);
 				setState(137);
-				match(Nome);
+				match(NOME);
 				setState(138);
 				corpodafuncao();
 				}
@@ -654,7 +654,7 @@ public class LuaParser extends Parser {
 				match(T__33);
 				setState(149);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__15) | (1L << T__16) | (1L << T__31) | (1L << T__39) | (1L << T__41) | (1L << T__42) | (1L << T__43) | (1L << T__44) | (1L << T__45) | (1L << Nome) | (1L << Numero) | (1L << Cadeia))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__15) | (1L << T__16) | (1L << T__31) | (1L << T__39) | (1L << T__41) | (1L << T__42) | (1L << T__43) | (1L << T__44) | (1L << T__45) | (1L << NOME) | (1L << NUMERO) | (1L << CADEIA))) != 0)) {
 					{
 					setState(148);
 					listaexp();
@@ -686,9 +686,9 @@ public class LuaParser extends Parser {
 	}
 
 	public static class NomedafuncaoContext extends ParserRuleContext {
-		public List<TerminalNode> Nome() { return getTokens(LuaParser.Nome); }
-		public TerminalNode Nome(int i) {
-			return getToken(LuaParser.Nome, i);
+		public List<TerminalNode> NOME() { return getTokens(LuaParser.NOME); }
+		public TerminalNode NOME(int i) {
+			return getToken(LuaParser.NOME, i);
 		}
 		public NomedafuncaoContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -712,7 +712,7 @@ public class LuaParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(154);
-			match(Nome);
+			match(NOME);
 			setState(159);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
@@ -722,7 +722,7 @@ public class LuaParser extends Parser {
 				setState(155);
 				match(T__35);
 				setState(156);
-				match(Nome);
+				match(NOME);
 				}
 				}
 				setState(161);
@@ -736,7 +736,7 @@ public class LuaParser extends Parser {
 				setState(162);
 				match(T__36);
 				setState(163);
-				match(Nome);
+				match(NOME);
 				}
 			}
 
@@ -813,7 +813,7 @@ public class LuaParser extends Parser {
 	}
 
 	public static class VarContext extends ParserRuleContext {
-		public TerminalNode Nome() { return getToken(LuaParser.Nome, 0); }
+		public TerminalNode NOME() { return getToken(LuaParser.NOME, 0); }
 		public ExpprefixoContext expprefixo() {
 			return getRuleContext(ExpprefixoContext.class,0);
 		}
@@ -845,7 +845,7 @@ public class LuaParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(174);
-				match(Nome);
+				match(NOME);
 				}
 				break;
 			case 2:
@@ -869,7 +869,7 @@ public class LuaParser extends Parser {
 				setState(181);
 				match(T__35);
 				setState(182);
-				match(Nome);
+				match(NOME);
 				}
 				break;
 			}
@@ -892,7 +892,7 @@ public class LuaParser extends Parser {
 		public ArgsContext args() {
 			return getRuleContext(ArgsContext.class,0);
 		}
-		public TerminalNode Nome() { return getToken(LuaParser.Nome, 0); }
+		public TerminalNode NOME() { return getToken(LuaParser.NOME, 0); }
 		public ChamadadefuncaoContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -931,7 +931,7 @@ public class LuaParser extends Parser {
 				setState(190);
 				match(T__36);
 				setState(191);
-				match(Nome);
+				match(NOME);
 				setState(192);
 				args();
 				}
@@ -950,7 +950,7 @@ public class LuaParser extends Parser {
 	}
 
 	public static class ExpprefixoContext extends ParserRuleContext {
-		public TerminalNode Nome() { return getToken(LuaParser.Nome, 0); }
+		public TerminalNode NOME() { return getToken(LuaParser.NOME, 0); }
 		public ExpContext exp() {
 			return getRuleContext(ExpContext.class,0);
 		}
@@ -982,7 +982,7 @@ public class LuaParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(196);
-				match(Nome);
+				match(NOME);
 				}
 				break;
 			case 2:
@@ -1000,7 +1000,7 @@ public class LuaParser extends Parser {
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(201);
-				match(Nome);
+				match(NOME);
 				setState(202);
 				expprefixoTail();
 				}
@@ -1035,7 +1035,7 @@ public class LuaParser extends Parser {
 		public ExpContext exp() {
 			return getRuleContext(ExpContext.class,0);
 		}
-		public TerminalNode Nome() { return getToken(LuaParser.Nome, 0); }
+		public TerminalNode NOME() { return getToken(LuaParser.NOME, 0); }
 		public ArgsContext args() {
 			return getRuleContext(ArgsContext.class,0);
 		}
@@ -1080,7 +1080,7 @@ public class LuaParser extends Parser {
 				setState(214);
 				match(T__35);
 				setState(215);
-				match(Nome);
+				match(NOME);
 				}
 				break;
 			case 3:
@@ -1096,7 +1096,7 @@ public class LuaParser extends Parser {
 				setState(217);
 				match(T__36);
 				setState(218);
-				match(Nome);
+				match(NOME);
 				setState(219);
 				args();
 				}
@@ -1120,7 +1120,7 @@ public class LuaParser extends Parser {
 				setState(225);
 				match(T__35);
 				setState(226);
-				match(Nome);
+				match(NOME);
 				setState(227);
 				expprefixoTail();
 				}
@@ -1140,7 +1140,7 @@ public class LuaParser extends Parser {
 				setState(231);
 				match(T__36);
 				setState(232);
-				match(Nome);
+				match(NOME);
 				setState(233);
 				args();
 				setState(234);
@@ -1161,9 +1161,9 @@ public class LuaParser extends Parser {
 	}
 
 	public static class ListadenomesContext extends ParserRuleContext {
-		public List<TerminalNode> Nome() { return getTokens(LuaParser.Nome); }
-		public TerminalNode Nome(int i) {
-			return getToken(LuaParser.Nome, i);
+		public List<TerminalNode> NOME() { return getTokens(LuaParser.NOME); }
+		public TerminalNode NOME(int i) {
+			return getToken(LuaParser.NOME, i);
 		}
 		public ListadenomesContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1187,7 +1187,7 @@ public class LuaParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(238);
-			match(Nome);
+			match(NOME);
 			setState(243);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,18,_ctx);
@@ -1198,7 +1198,7 @@ public class LuaParser extends Parser {
 					setState(239);
 					match(T__29);
 					setState(240);
-					match(Nome);
+					match(NOME);
 					}
 					} 
 				}
@@ -1281,8 +1281,8 @@ public class LuaParser extends Parser {
 	}
 
 	public static class ExpContext extends ParserRuleContext {
-		public TerminalNode Numero() { return getToken(LuaParser.Numero, 0); }
-		public TerminalNode Cadeia() { return getToken(LuaParser.Cadeia, 0); }
+		public TerminalNode NUMERO() { return getToken(LuaParser.NUMERO, 0); }
+		public TerminalNode CADEIA() { return getToken(LuaParser.CADEIA, 0); }
 		public FuncaoContext funcao() {
 			return getRuleContext(FuncaoContext.class,0);
 		}
@@ -1353,16 +1353,16 @@ public class LuaParser extends Parser {
 				match(T__43);
 				}
 				break;
-			case Numero:
+			case NUMERO:
 				{
 				setState(260);
-				match(Numero);
+				match(NUMERO);
 				}
 				break;
-			case Cadeia:
+			case CADEIA:
 				{
 				setState(261);
-				match(Cadeia);
+				match(CADEIA);
 				}
 				break;
 			case T__44:
@@ -1378,7 +1378,7 @@ public class LuaParser extends Parser {
 				}
 				break;
 			case T__39:
-			case Nome:
+			case NOME:
 				{
 				setState(264);
 				expprefixo();
@@ -1448,7 +1448,7 @@ public class LuaParser extends Parser {
 		public ConstrutortabelaContext construtortabela() {
 			return getRuleContext(ConstrutortabelaContext.class,0);
 		}
-		public TerminalNode Cadeia() { return getToken(LuaParser.Cadeia, 0); }
+		public TerminalNode CADEIA() { return getToken(LuaParser.CADEIA, 0); }
 		public ArgsContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1477,7 +1477,7 @@ public class LuaParser extends Parser {
 				match(T__39);
 				setState(282);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__15) | (1L << T__16) | (1L << T__31) | (1L << T__39) | (1L << T__41) | (1L << T__42) | (1L << T__43) | (1L << T__44) | (1L << T__45) | (1L << Nome) | (1L << Numero) | (1L << Cadeia))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__15) | (1L << T__16) | (1L << T__31) | (1L << T__39) | (1L << T__41) | (1L << T__42) | (1L << T__43) | (1L << T__44) | (1L << T__45) | (1L << NOME) | (1L << NUMERO) | (1L << CADEIA))) != 0)) {
 					{
 					setState(281);
 					listaexp();
@@ -1495,11 +1495,11 @@ public class LuaParser extends Parser {
 				construtortabela();
 				}
 				break;
-			case Cadeia:
+			case CADEIA:
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(286);
-				match(Cadeia);
+				match(CADEIA);
 				}
 				break;
 			default:
@@ -1590,7 +1590,7 @@ public class LuaParser extends Parser {
 			match(T__39);
 			setState(294);
 			_la = _input.LA(1);
-			if (_la==T__44 || _la==Nome) {
+			if (_la==T__44 || _la==NOME) {
 				{
 				setState(293);
 				listapar();
@@ -1641,7 +1641,7 @@ public class LuaParser extends Parser {
 		try {
 			setState(306);
 			switch (_input.LA(1)) {
-			case Nome:
+			case NOME:
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(300);
@@ -1710,7 +1710,7 @@ public class LuaParser extends Parser {
 			match(T__45);
 			setState(310);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__15) | (1L << T__16) | (1L << T__31) | (1L << T__37) | (1L << T__39) | (1L << T__41) | (1L << T__42) | (1L << T__43) | (1L << T__44) | (1L << T__45) | (1L << Nome) | (1L << Numero) | (1L << Cadeia))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__15) | (1L << T__16) | (1L << T__31) | (1L << T__37) | (1L << T__39) | (1L << T__41) | (1L << T__42) | (1L << T__43) | (1L << T__44) | (1L << T__45) | (1L << NOME) | (1L << NUMERO) | (1L << CADEIA))) != 0)) {
 				{
 				setState(309);
 				listadecampos();
@@ -1739,9 +1739,9 @@ public class LuaParser extends Parser {
 		public CampoContext campo(int i) {
 			return getRuleContext(CampoContext.class,i);
 		}
-		public List<TerminalNode> Separadordecampos() { return getTokens(LuaParser.Separadordecampos); }
-		public TerminalNode Separadordecampos(int i) {
-			return getToken(LuaParser.Separadordecampos, i);
+		public List<TerminalNode> SEPARADORDECAMPOS() { return getTokens(LuaParser.SEPARADORDECAMPOS); }
+		public TerminalNode SEPARADORDECAMPOS(int i) {
+			return getToken(LuaParser.SEPARADORDECAMPOS, i);
 		}
 		public ListadecamposContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1775,7 +1775,7 @@ public class LuaParser extends Parser {
 					{
 					{
 					setState(315);
-					match(Separadordecampos);
+					match(SEPARADORDECAMPOS);
 					setState(316);
 					campo();
 					}
@@ -1787,10 +1787,10 @@ public class LuaParser extends Parser {
 			}
 			setState(323);
 			_la = _input.LA(1);
-			if (_la==Separadordecampos) {
+			if (_la==SEPARADORDECAMPOS) {
 				{
 				setState(322);
-				match(Separadordecampos);
+				match(SEPARADORDECAMPOS);
 				}
 			}
 
@@ -1814,7 +1814,7 @@ public class LuaParser extends Parser {
 		public ExpContext exp(int i) {
 			return getRuleContext(ExpContext.class,i);
 		}
-		public TerminalNode Nome() { return getToken(LuaParser.Nome, 0); }
+		public TerminalNode NOME() { return getToken(LuaParser.NOME, 0); }
 		public CampoContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1855,7 +1855,7 @@ public class LuaParser extends Parser {
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(331);
-				match(Nome);
+				match(NOME);
 				setState(332);
 				match(T__18);
 				setState(333);

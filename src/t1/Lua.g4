@@ -95,11 +95,11 @@ expprefixo
 expprefixoTail    
     :   '[' exp ']' 
     |   '.' NOME //{ TabelaDeSimbolos.adicionarSimbolo($NOME.text,Tipo.FUNCAO); } 
-    |   args 
+    //|   args 
     //|   ':' NOME args 
     |   '[' exp ']' expprefixoTail 
     //|   '.' NOME expprefixoTail 
-    |   args expprefixoTail 
+    //|   args expprefixoTail 
     |   ':' NOME args expprefixoTail 
     ;
 listadenomes      

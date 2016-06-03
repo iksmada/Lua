@@ -56,8 +56,6 @@ public class Corrigir {
                 System.err.print(out);
             } else {
                 out.println("Fim da analise. Com erros sintaticos.");
-                TabelaDeSimbolos.imprimirTabela(out);
-                System.err.print(out);
             }
 
             if (GERA) {

@@ -71,29 +71,29 @@ ultimocomando
     :   'return' (listaexp)? | 'break' 
     ;
 nomedafuncao      
-    :   NOME ('.' NOME)* (':' NOME)? 
+    :   NOME ('.' NOME)* (':' NOME)? { TabelaDeSimbolos.adicionarSimbolo($NOME.text,Tipo.FUNCAO); }  
     ;
 listavar          
     :   var (',' var)* 
     ;
 var               
-    :   NOME 
+    :   NOME { TabelaDeSimbolos.adicionarSimbolo($NOME.text,Tipo.VARIAVEL); } 
     |   expprefixo '[' exp ']' 
     |   expprefixo '.' NOME 
     ;
 chamadadefuncao   
-    :   expprefixo args 
+    :   NOME { TabelaDeSimbolos.adicionarSimbolo($NOME.text,Tipo.FUNCAO); } args 
     |   expprefixo ':' NOME args 
     ;
 expprefixo        
-    :   NOME 
+    :   NOME { TabelaDeSimbolos.adicionarSimbolo($NOME.text,Tipo.VARIAVEL); } 
     |   '(' exp ')' 
     |   NOME expprefixoTail 
     |   '(' exp ')' expprefixoTail 
     ;
 expprefixoTail    
     :   '[' exp ']' 
-    |   '.' NOME | args 
+    |   '.' NOME { TabelaDeSimbolos.adicionarSimbolo($NOME.text,Tipo.FUNCAO); } | args 
     |   ':' NOME args 
     |   '[' exp ']' expprefixoTail 
     |   '.' NOME expprefixoTail 
@@ -101,7 +101,7 @@ expprefixoTail
     |   ':' NOME args expprefixoTail 
     ;
 listadenomes      
-    :   NOME (',' NOME)* 
+    :   NOME { TabelaDeSimbolos.adicionarSimbolo($NOME.text,Tipo.VARIAVEL); } (',' NOME { TabelaDeSimbolos.adicionarSimbolo($NOME.text,Tipo.VARIAVEL); } )* 
     ;
 listaexp          
     :   (exp ',')* exp 

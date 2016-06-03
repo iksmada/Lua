@@ -13,7 +13,7 @@ public class TestaAnalisadorSintatico {
 // Obs: a linha abaixo está configurada para usar como entrada o arquivo lua1.txt
 // Modifique-a para testar os demais exemplos
 
-        ANTLRInputStream input = new ANTLRInputStream(TestaAnalisadorSintatico.class.getResourceAsStream("exemplos/lua5.txt"));
+        ANTLRInputStream input = new ANTLRInputStream(TestaAnalisadorSintatico.class.getResourceAsStream("exemplos/lua2.txt"));
         LuaLexer lexer = new LuaLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         LuaParser parser = new LuaParser(tokens);

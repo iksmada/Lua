@@ -6,7 +6,7 @@
 grammar Lua;
 
 @members {
-   public static String grupo="495913, 495719";
+   public static String grupo="495913, 495719, 558311";
 }
 
 /*ref: https://github.com/antlr/antlr4/blob/master/doc/lexer-rules.md#lexer-rule-elements

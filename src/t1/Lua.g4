@@ -16,14 +16,18 @@ Nomes (tambem chamados de identificadores) em Lua podem ser qualquer cadeia de l
 NOME              
     :   ( 'a'..'z' | 'A'..'Z' | '_' ) ( 'a'..'z' | 'A'..'Z' | '_' | '0'..'9' )*
     ;
-/*PALAVRASRESERVADAS
+/*Palavras reservadas são as funções utilizadas pela Linguagem LUA*/
+PALAVRASRESERVADAS
     :   'and' | 'break' | 'do' | 'else' | 'elseif' | 'end' | 'false' | 'for' 
     |   'function' | 'goto' | 'if' | 'in' | 'local' | 'nil' | 'not' | 'or' 
     |   'repeat' | 'return' | 'then' | 'true' | 'until' | 'while'
-    ;*/
+    ;
+/*Numeros define o formato dos numeros aceitos pela Linguagem Lua*/
 NUMERO            
     :   ('0'..'9')+ ('.' ('0'..'9')*)?
     ;
+/*Por convenção as strings podem ser do formato definido abaixo, com tabulações, pula linha(\n), ou seja, uma mesma string pode conter uma parte em uma linha e outra parte na linha seguinte.
+Também é possível que a string inicie com aspas duplas e colchetes e termine da mesma maneira. Números e letras também podem ser escritos de acordo com a tabela ASCII*/
 CADEIA 
     :   '"' ~( '\n' | '\t' | '\r' )* '"'
     |   '\''~( '\n' | '\t' | '\r' )* '\''
@@ -31,12 +35,15 @@ CADEIA
 WS              
     :   [ \t\r\n]+ -> skip 
     ;
+/*De acordo com a linguagem Lua, comentários devem ser iniciados com um hífen duplo*/
 COMENTARIO      
     :   '--' ~[\r\n]* '\r'? '\n' -> skip
     ;
+/*Separadores de campos devem ser vírgula ou ponto e vírgula*/
 SEPARADORDECAMPOS 
     :   ',' | ';' 
     ;
+*São todos os operadores binários definidos pela linguagem Lua*/
 opbin
     :   '+' | '-' | '*' | '/' | '^' | '%' | '..' 
     |   '<' | '<=' | '>' | '>=' | '==' | '~=' 

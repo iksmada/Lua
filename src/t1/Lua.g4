@@ -43,7 +43,7 @@ COMENTARIO
 SEPARADORDECAMPOS 
     :   ',' | ';' 
     ;
-*São todos os operadores binários definidos pela linguagem Lua*/
+/*São todos os operadores binários definidos pela linguagem Lua*/
 opbin
     :   '+' | '-' | '*' | '/' | '^' | '%' | '..' 
     |   '<' | '<=' | '>' | '>=' | '==' | '~=' 

@@ -49,6 +49,7 @@ opbin
     |   '<' | '<=' | '>' | '>=' | '==' | '~=' 
     |   'and' | 'or' 
     ;
+/*Operadores unários da linguagem*/
 opunaria          
     : '-' | 'not' | '#' 
     ;
@@ -88,6 +89,27 @@ var
     |   expprefixo '[' exp ']' 
     |   expprefixo '.' NOME 
     ;
+/*Inicialmente tinha-se o seguinte trecho de codigo:
+    expprefixo        : var | chamadadefuncao | '(' exp ')' ;
+Para eliminar a recursão indireta a esquerda foi utilizado o seguinte algoritmo:
+Seja a gramática:
+    A --> Ba | Aa | c
+    B --> Bb | Ab | d
+
+Primeiro removemos a recursão imediata de A:
+    A --> B a Atail | c Atail
+    Atail --> a Atail | e
+
+Segundo eliminamos a recursão indireta de B --> Ab:
+    B --> B b | B a Atail b | c Atail b | d
+
+E por último removemos a recursão imediata de B:
+    B --> c Atail b Btail | d Btail
+    Btail --> b Btail | a Atail b Btail | e
+
+Que no caso do nosso código gerou as regras de expprefixoTail
+    
+*/
 chamadadefuncao   
     :   NOME { TabelaDeSimbolos.adicionarSimbolo($NOME.text,Tipo.FUNCAO); } args 
     |   expprefixo ':' NOME args 

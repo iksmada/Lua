@@ -36,7 +36,7 @@ WS
 COMENTARIO      
     :   '--' ~[\r\n]* '\r'? '\n' -> skip
     ;
-/* SEPARADOR DE CAMPOS deve ser virugla ou ponto-e-virgula*/
+/* SEPARADOR DE CAMPOS deve ser virugla ou ponto-e-virgula */
 SEPARADORDECAMPOS 
     :   ',' | ';' 
     ;
@@ -52,7 +52,11 @@ opunaria
     ;
 
 /* 
-As demais regras, com excecao de "expprefixo", foram baseadas na gramatica da Lua contida no manual da linguagem, efetuando apenas as traducoes necessarias para a sintaxe do ANTLR e inserindo as acoes semanticas para gerar a tabela de simbolos. No caso de "expprefixo", alem dos ajustes sintaticos, foram feitas modificacoes na regra a fim de remover a recursividade a esquerda. 
+ * As demais regras, com excecao de "expprefixo", foram baseadas na gramatica da Lua 
+ * contida no manual da linguagem, efetuando apenas as traducoes necessarias para a 
+ * sintaxe do ANTLR e inserindo as acoes semanticas para gerar a tabela de simbolos. 
+ * No caso de "expprefixo", alem dos ajustes sintaticos, foram feitas modificacoes 
+ * na regra a fim de remover a recursividade a esquerda. 
 */
 
 programa
@@ -128,31 +132,33 @@ campo
     ;
 
 /*
-Inicialmente tinha-se uma recursao indireta a esquerda envolvendo as seguintes regras:
-    expprefixo      : var | chamadadefuncao | '(' exp ')' ;
-    var             : NOME | expprefixo '['' exp ']' | expprefixo '.' NOME ;
-    chamadadefuncao : expprefixo args | expprefixo ':' NOME args ;
-
-Para eliminar a recursao, primeiramente foram expandidas as producoes de "var" e "chamadadefuncao" dentro da regra "expprefixo", obtendo:
-    expprefixo
-        : NOME | expprefixo '['' exp ']' | expprefixo '.' NOME  *//* var *//*
-        | expprefixo args | expprefixo ':' NOME args            *//* chamadadefuncao *//*
-        | '(' exp ')' ;
-
-Em seguida, foi utilizado o seguinte algoritmo para remocao de recursao direta a esquerda:
-    Seja a gramática:
-        A -> Aa | b
-    Modificar a gramática da seguinte forma:
-        A  -> bA' | b
-        A' -> aA' | a
-
-No caso da gramática da linguagem Lua,
-    A = expprefixo, 
-    A' = expprefixoTail, 
-    b = (NOME | '(' exp ')'),
-    a = ('['' exp ']' | '.' NOME | args | ':' NOME args)
-
-Fazendo os devidos ajustes para geracao da tabela de simbolos, obtivemos as seguintes regras "expprefixo" e "expprefixoTail".
+ * Inicialmente tinha-se uma recursao indireta a esquerda envolvendo as seguintes regras:
+ *     expprefixo      : var | chamadadefuncao | '(' exp ')' ;
+ *     var             : NOME | expprefixo '['' exp ']' | expprefixo '.' NOME ;
+ *     chamadadefuncao : expprefixo args | expprefixo ':' NOME args ;
+ * 
+ * Para eliminar a recursao, primeiramente foram expandidas as producoes de "var" 
+ * e "chamadadefuncao" dentro da regra "expprefixo", obtendo:
+ *     expprefixo
+ *         : NOME | expprefixo '['' exp ']' | expprefixo '.' NOME  *//* var *//*
+ *         | expprefixo args | expprefixo ':' NOME args            *//* chamadadefuncao *//*
+ *         | '(' exp ')' ;
+ * 
+ * Em seguida, foi utilizado o seguinte algoritmo para remocao de recursao direta a esquerda:
+ *     Seja a gramática:
+ *         A -> Aa | b
+ *     Modificar a gramática da seguinte forma:
+ *         A  -> bA' | b
+ *         A' -> aA' | a
+ * 
+ * No caso da gramática da linguagem Lua,
+ *     A = expprefixo, 
+ *     A' = expprefixoTail, 
+ *     b = (NOME | '(' exp ')'),
+ *     a = ('['' exp ']' | '.' NOME | args | ':' NOME args)
+ * 
+ * Fazendo os devidos ajustes para geracao da tabela de simbolos, obtivemos as 
+ * seguintes regras "expprefixo" e "expprefixoTail".
 */
 
 expprefixo        

@@ -9,50 +9,52 @@ grammar Lua;
    public static String grupo="495913, 495719, 558311";
 }
 
-/*ref: https://github.com/antlr/antlr4/blob/master/doc/lexer-rules.md#lexer-rule-elements
-        https://github.com/antlr/antlr4/blob/master/doc/parser-rules.md#rule-elements
-Nomes (tambem chamados de identificadores) em Lua podem ser qualquer cadeia de letras, digitos, e sublinhados, que nao iniciam com um digito. Identificadores sao usados para nomear variaveis, campos de tabelas, e rotulos.*/
-
+/* NOME pode qualquer cadeia de letras, digitos e sublinhados que nao inicie com um digito e nao seja uma palavra reservada. */
 NOME              
     :   ( 'a'..'z' | 'A'..'Z' | '_' ) ( 'a'..'z' | 'A'..'Z' | '_' | '0'..'9' )*
     ;
-/*Palavras reservadas são as funções utilizadas pela Linguagem LUA*/
+/* PALAVRAS RESERVADAS sao palavras-chave usadas pela linguagem Lua e, portanto, nao podem ser utilizadas como nomes. */
 PALAVRASRESERVADAS
     :   'and' | 'break' | 'do' | 'else' | 'elseif' | 'end' | 'false' | 'for' 
     |   'function' | 'goto' | 'if' | 'in' | 'local' | 'nil' | 'not' | 'or' 
     |   'repeat' | 'return' | 'then' | 'true' | 'until' | 'while'
     ;
-/*Numeros define o formato dos numeros aceitos pela Linguagem Lua*/
+/* NUMERO define o formato dos numeros aceitos pela linguagem Lua. */
 NUMERO            
     :   ('0'..'9')+ ('.' ('0'..'9')*)?
     ;
-/*Por convenção as strings podem ser do formato definido abaixo, com tabulações, pula linha(\n), ou seja, uma mesma string pode conter uma parte em uma linha e outra parte na linha seguinte.
-Também é possível que a string inicie com aspas duplas e colchetes e termine da mesma maneira. Números e letras também podem ser escritos de acordo com a tabela ASCII*/
+/* CADEIA define as cadeiras de caracteres, que podem ser delimitadas por aspas simples ou aspas duplas. */
 CADEIA 
-    :   '"' ~( '\n' | '\t' | '\r' )* '"'
-    |   '\''~( '\n' | '\t' | '\r' )* '\''
+    :   '"'  ~( '\n' | '\t' | '\r' )* '"'
+    |   '\'' ~( '\n' | '\t' | '\r' )* '\''
     ;
+/* WS faz o tratamento de espaços em branco (whitespaces). */
 WS              
     :   [ \t\r\n]+ -> skip 
     ;
-/*De acordo com a linguagem Lua, comentários devem ser iniciados com um hífen duplo*/
+/* COMENTARIO inicia com hifen duplo. */
 COMENTARIO      
     :   '--' ~[\r\n]* '\r'? '\n' -> skip
     ;
-/*Separadores de campos devem ser vírgula ou ponto e vírgula*/
+/* SEPARADOR DE CAMPOS deve ser virugla ou ponto-e-virgula*/
 SEPARADORDECAMPOS 
     :   ',' | ';' 
     ;
-/*São todos os operadores binários definidos pela linguagem Lua*/
+/* Operadores binarios */
 opbin
     :   '+' | '-' | '*' | '/' | '^' | '%' | '..' 
     |   '<' | '<=' | '>' | '>=' | '==' | '~=' 
     |   'and' | 'or' 
     ;
-/*Operadores unários da linguagem*/
+/* Operadores unarios */
 opunaria          
     : '-' | 'not' | '#' 
     ;
+
+/* 
+As demais regras, com excecao de "expprefixo", foram baseadas na gramatica da Lua contida no manual da linguagem, efetuando apenas as traducoes necessarias para a sintaxe do ANTLR e inserindo as acoes semanticas para gerar a tabela de simbolos. No caso de "expprefixo", alem dos ajustes sintaticos, foram feitas modificacoes na regra a fim de remover a recursividade a esquerda. 
+*/
+
 programa
     :   trecho 
     ;
@@ -89,47 +91,9 @@ var
     |   expprefixo '[' exp ']' 
     |   expprefixo '.' NOME 
     ;
-/*Inicialmente tinha-se o seguinte trecho de codigo:
-    expprefixo        : var | chamadadefuncao | '(' exp ')' ;
-Para eliminar a recursão indireta a esquerda foi utilizado o seguinte algoritmo:
-Seja a gramática:
-    A --> Ba | Aa | c
-    B --> Bb | Ab | d
-
-Primeiro removemos a recursão imediata de A:
-    A --> B a Atail | c Atail
-    Atail --> a Atail | e
-
-Segundo eliminamos a recursão indireta de B --> Ab:
-    B --> B b | B a Atail b | c Atail b | d
-
-E por último removemos a recursão imediata de B:
-    B --> c Atail b Btail | d Btail
-    Btail --> b Btail | a Atail b Btail | e
-
-Que no caso do nosso código gerou as regras de expprefixoTail
-    
-*/
 chamadadefuncao   
     :   NOME { TabelaDeSimbolos.adicionarSimbolo($NOME.text,Tipo.FUNCAO); } args 
     |   expprefixo ':' NOME args 
-    ;
-expprefixo        
-    :   NOME { TabelaDeSimbolos.adicionarSimbolo($NOME.text,Tipo.VARIAVEL); } 
-    |   '(' exp ')' 
-    |   NOME expprefixoTail
-    |   '(' exp ')' expprefixoTail 
-    |   nomedafuncao args { TabelaDeSimbolos.adicionarSimbolo($nomedafuncao.text,Tipo.FUNCAO); }
-    ;
-expprefixoTail    
-    :   '[' exp ']' 
-    |   '.' NOME //{ TabelaDeSimbolos.adicionarSimbolo($NOME.text,Tipo.FUNCAO); } 
-    //|   args 
-    //|   ':' NOME args 
-    |   '[' exp ']' expprefixoTail 
-    //|   '.' NOME expprefixoTail 
-    //|   args expprefixoTail 
-    |   ':' NOME args expprefixoTail 
     ;
 listadenomes      
     :   NOME { TabelaDeSimbolos.adicionarSimbolo($NOME.text,Tipo.VARIAVEL); } (',' NOME { TabelaDeSimbolos.adicionarSimbolo($NOME.text,Tipo.VARIAVEL); } )* 
@@ -161,4 +125,46 @@ listadecampos
     ;
 campo
     :   '[' exp ']' '=' exp | NOME '=' exp | exp 
+    ;
+
+/*
+Inicialmente tinha-se uma recursao indireta a esquerda envolvendo as seguintes regras:
+    expprefixo      : var | chamadadefuncao | '(' exp ')' ;
+    var             : NOME | expprefixo '['' exp ']' | expprefixo '.' NOME ;
+    chamadadefuncao : expprefixo args | expprefixo ':' NOME args ;
+
+Para eliminar a recursao, primeiramente foram expandidas as producoes de "var" e "chamadadefuncao" dentro da regra "expprefixo", obtendo:
+    expprefixo
+        : NOME | expprefixo '['' exp ']' | expprefixo '.' NOME  *//* var *//*
+        | expprefixo args | expprefixo ':' NOME args            *//* chamadadefuncao *//*
+        | '(' exp ')' ;
+
+Em seguida, foi utilizado o seguinte algoritmo para remocao de recursao direta a esquerda:
+    Seja a gramática:
+        A -> Aa | b
+    Modificar a gramática da seguinte forma:
+        A  -> bA' | b
+        A' -> aA' | a
+
+No caso da gramática da linguagem Lua,
+    A = expprefixo, 
+    A' = expprefixoTail, 
+    b = (NOME | '(' exp ')'),
+    a = ('['' exp ']' | '.' NOME | args | ':' NOME args)
+
+Fazendo os devidos ajustes para geracao da tabela de simbolos, obtivemos as seguintes regras "expprefixo" e "expprefixoTail".
+*/
+
+expprefixo        
+    :   NOME { TabelaDeSimbolos.adicionarSimbolo($NOME.text,Tipo.VARIAVEL); } 
+    |   '(' exp ')' 
+    |   NOME expprefixoTail
+    |   '(' exp ')' expprefixoTail 
+    |   nomedafuncao args { TabelaDeSimbolos.adicionarSimbolo($nomedafuncao.text,Tipo.FUNCAO); }
+    ;
+expprefixoTail    
+    :   '[' exp ']' 
+    |   '.' NOME //{ TabelaDeSimbolos.adicionarSimbolo($NOME.text,Tipo.FUNCAO); } 
+    |   '[' exp ']' expprefixoTail 
+    |   ':' NOME args expprefixoTail 
     ;
